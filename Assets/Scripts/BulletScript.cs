@@ -18,5 +18,12 @@ public class BulletScript : MonoBehaviour
             Debug.Log("Hit" + collision.gameObject.name);
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Zombie"))
+        {
+            Debug.Log("Hit " + collision.gameObject.name);
+            collision.gameObject.GetComponent<Zombie>().TakeDamage(25);
+            Destroy(gameObject);
+        }
     }
 }

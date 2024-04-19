@@ -11,7 +11,7 @@ public class Weapon : MonoBehaviour
     //shooting
     public bool isFiring, readyToFire;
     bool allowreset = true;
-    public float shootingDelay = 2f;
+    public float shootingDelay = 0.5f;
 
     //burst
     public int burstCount = 3;
