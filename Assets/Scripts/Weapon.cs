@@ -25,7 +25,7 @@ public class Weapon : MonoBehaviour
     public float bulletVelocity = 30;
     public float bulletLife = 2f;
 
-    public GameObject muzzleEffect;
+    //public GameObject muzzleEffect;
 
     //loading
     public float reloadTime = 2f;
@@ -89,11 +89,11 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    private void Fire()
+    private void Fire() 
     {
         bulletsLeft--;
 
-        muzzleEffect.GetComponent<ParticleSystem>().Play();
+        //muzzleEffect.GetComponent<ParticleSystem>().Play();
 
         readyToFire = false;
 

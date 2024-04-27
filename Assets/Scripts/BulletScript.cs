@@ -22,7 +22,7 @@ public class BulletScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Zombie"))
         {
             Debug.Log("Hit " + collision.gameObject.name);
-            collision.gameObject.GetComponent<Zombie>().TakeDamage(25);
+            collision.gameObject.GetComponent<Zombie>().TakeDamage(50);
             Destroy(gameObject);
         }
     }
