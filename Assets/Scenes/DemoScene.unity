@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 72949881}
   - component: {fileID: 72949880}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Roundtext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -883,6 +883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 30
   gameCanvas: {fileID: 1061304151}
+  damageResetTime: 5
 --- !u!54 &339979029
 Rigidbody:
   m_ObjectHideFlags: 0

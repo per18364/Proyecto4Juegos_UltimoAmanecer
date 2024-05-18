@@ -938,7 +938,6 @@ GameObject:
   - component: {fileID: 3508080783538925026}
   - component: {fileID: 4525537617520333690}
   - component: {fileID: 3913773126489444711}
-  - component: {fileID: 8482580062972099542}
   - component: {fileID: 4665485541420075316}
   m_Layer: 0
   m_Name: Ghoul
@@ -976,7 +975,7 @@ Animation:
   m_GameObject: {fileID: 1309486516299566}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400004, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
+  m_Animation: {fileID: 7400002, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
   m_Animations:
   - {fileID: 7400000, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
   - {fileID: 7400002, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
@@ -1047,27 +1046,6 @@ CapsuleCollider:
   m_Height: 3.7
   m_Direction: 1
   m_Center: {x: 0, y: 2, z: 0}
---- !u!95 &8482580062972099542
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1309486516299566}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!136 &4665485541420075316
 CapsuleCollider:
   m_ObjectHideFlags: 0
