@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private float lastDamageTime; // Tiempo del último golpe recibido
     private bool isResettingDamage;
     private int currHp;
+    [SerializeField] private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
         lastDamageTime = Time.time;
         isResettingDamage = false;
         currHp = hp;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -56,7 +58,8 @@ public class Player : MonoBehaviour
         // make the damage color appear gradually
         dmg.SetActive(true);
         Color dmgColor = dmg.GetComponent<Image>().color;
-        dmgColor.a += 0.33f;
+        // dmgColor.a += 0.33f;
+        dmgColor.a = Mathf.Clamp(dmgColor.a + 0.33f, 0, 1); // Asegúrate de que el alfa esté dentro del rango [0, 1]
         dmg.GetComponent<Image>().color = dmgColor;
         if (currHp <= 0)
         {
@@ -65,6 +68,7 @@ public class Player : MonoBehaviour
             GameObject gameOverText = gameCanvas.transform.Find("GameOverText").gameObject;
             gameOverText.GetComponent<TextMeshProUGUI>().text = "GAME OVER\n\nSobreviviste hasta " + roundsText.GetComponent<TextMeshProUGUI>().text;
             gameOverText.SetActive(true);
+            gameManager.PlayerDied();
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
         }
