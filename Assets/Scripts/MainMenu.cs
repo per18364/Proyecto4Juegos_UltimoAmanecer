@@ -20,4 +20,14 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("DemoScene"); // Reemplaza "GameScene" con el nombre de tu escena de juego
     }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quit");
+        Application.Quit();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+    }
 }

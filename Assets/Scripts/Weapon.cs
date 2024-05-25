@@ -26,6 +26,8 @@ public class Weapon : MonoBehaviour
     public float bulletLife = 2f;
 
     //public GameObject muzzleEffect;
+    public AudioSource audioSource;
+    public AudioClip shotSound;
 
     //loading
     public float reloadTime = 2f;
@@ -47,6 +49,11 @@ public class Weapon : MonoBehaviour
         burstBulletsLeft = burstCount;
 
         bulletsLeft = magazineSize;
+
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
     }
 
     // Start is called before the first frame update
@@ -89,11 +96,15 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    private void Fire() 
+    private void Fire()
     {
         bulletsLeft--;
 
         //muzzleEffect.GetComponent<ParticleSystem>().Play();
+        if (audioSource != null && shotSound != null)
+        {
+            audioSource.PlayOneShot(shotSound);
+        }
 
         readyToFire = false;
 
