@@ -53,6 +53,11 @@ public class Zombie : MonoBehaviour
         }
     }
 
+    public void SetHP(int newHP)
+    {
+        hp = newHP;
+    }
+
     public void TakeDamage(int damage)
     {
         hp -= damage;

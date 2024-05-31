@@ -11,9 +11,22 @@ public class RoundManager : MonoBehaviour
     private int roundNumber = 0;
     private int zombiesPerRound = 4;
     public TextMeshProUGUI roundText;
+    private int zombieBaseHP = 100; // HP base de los zombies
+
+    // Añadir AudioSource para la música de fondo
+    private AudioSource backgroundMusic;
 
     void Start()
     {
+        backgroundMusic = GetComponent<AudioSource>();
+
+        // Verificar si el AudioSource está asignado y reproducir la música
+        if (backgroundMusic != null)
+        {
+            backgroundMusic.loop = true; // Asegurarse de que la música se repita
+            backgroundMusic.Play();
+        }
+
         StartRound();
     }
 
@@ -31,16 +44,18 @@ public class RoundManager : MonoBehaviour
         roundNumber++;
         roundText.text = "Round " + roundNumber;
         int zombiesToSpawn = zombiesPerRound + (roundNumber - 1) * 2;
+        int zombieHP = zombieBaseHP + ((roundNumber - 1) / 2) * 50; // Incrementa el HP cada 2 rondas
 
         for (int i = 0; i < zombiesToSpawn; i++)
         {
-            SpawnZombie();
+            SpawnZombie(zombieHP);
         }
     }
 
-    void SpawnZombie()
+    void SpawnZombie(int hp)
     {
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
-        Instantiate(zombiePrefab, spawnPoints[spawnPointIndex].position, Quaternion.identity);
+        GameObject zombie = Instantiate(zombiePrefab, spawnPoints[spawnPointIndex].position, Quaternion.identity);
+        zombie.GetComponent<Zombie>().SetHP(hp);
     }
 }
