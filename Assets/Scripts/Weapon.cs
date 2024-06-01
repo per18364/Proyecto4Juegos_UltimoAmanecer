@@ -7,6 +7,10 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
 
+    public Vector3 spawnPosition;
+    public Quaternion spawnRotation;
+    public bool isActiveWeapon;
+
     //shooting
     public bool isFiring, readyToFire;
     bool allowreset = true;
@@ -41,6 +45,14 @@ public class Weapon : MonoBehaviour
         Auto
     }
 
+    public enum WeaponModel
+    {
+        M1911,
+        AK74
+    }
+
+    public WeaponModel weaponModel;
+
     public FireMode fireMode;
 
     private void Awake()
@@ -65,34 +77,37 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (fireMode == FireMode.Auto)
+        if(isActiveWeapon)
         {
-            isFiring = Input.GetKey(KeyCode.Mouse0);
-        }
-        else if (fireMode == FireMode.Single || fireMode == FireMode.Burst)
-        {
-            isFiring = Input.GetKeyDown(KeyCode.Mouse0);
-        }
+            if (fireMode == FireMode.Auto)
+            {
+                isFiring = Input.GetKey(KeyCode.Mouse0);
+            }
+            else if (fireMode == FireMode.Single || fireMode == FireMode.Burst)
+            {
+                isFiring = Input.GetKeyDown(KeyCode.Mouse0);
+            }
 
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading)
-        {
-            Reload();
-        }
+            if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading)
+            {
+                Reload();
+            }
 
-        if (bulletsLeft <= 0 && !isReloading && !isFiring && readyToFire)
-        {
-            Reload();
-        }
+            if (bulletsLeft <= 0 && !isReloading && !isFiring && readyToFire)
+            {
+                Reload();
+            }
 
-        if (isFiring && readyToFire && bulletsLeft > 0 && !isReloading)
-        {
-            burstBulletsLeft = burstCount;
-            Fire();
-        }
+            if (isFiring && readyToFire && bulletsLeft > 0 && !isReloading)
+            {
+                burstBulletsLeft = burstCount;
+                Fire();
+            }
 
-        if (AmmoManager.Instance.ammoText != null)
-        {
-            AmmoManager.Instance.ammoText.text = $"{bulletsLeft / burstCount}/{magazineSize / burstCount}";
+            if (AmmoManager.Instance.ammoText != null)
+            {
+                AmmoManager.Instance.ammoText.text = $"{bulletsLeft / burstCount}/{magazineSize / burstCount}";
+            }
         }
     }
 
@@ -101,7 +116,7 @@ public class Weapon : MonoBehaviour
         bulletsLeft--;
 
         //muzzleEffect.GetComponent<ParticleSystem>().Play();
-        if (audioSource != null && shotSound != null)
+        if (audioSource != null && shotSound != null && fireMode == FireMode.Single)
         {
             audioSource.PlayOneShot(shotSound);
         }
@@ -176,4 +191,6 @@ public class Weapon : MonoBehaviour
         yield return new WaitForSeconds(delay);
         Destroy(bullet);
     }
+
+   
 }
