@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
 
     bool isGrounded;
-    bool isMoving;
 
     public Vector3 lastPosition = new Vector3(0f, 0f, 0f);
 
@@ -53,14 +52,6 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
-        if (lastPosition != transform.position && isGrounded == true)
-        {
-            isMoving = true;
-        }
-        else
-        {
-            isMoving = false;
-        }
         lastPosition = transform.position;
     }
 }
