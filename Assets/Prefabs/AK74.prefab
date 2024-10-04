@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 4650981353498599469}
   - component: {fileID: 2029065429828238053}
   - component: {fileID: 1598511735466535316}
+  - component: {fileID: 7489595601138113364}
   m_Layer: 0
   m_Name: AK74
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 51658225885147238}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0.4, y: 1.3, z: 0.8}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
@@ -38,7 +39,7 @@ Transform:
   - {fileID: 575335834316075847}
   - {fileID: 1247043382264164290}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &907201125958047786
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -101,10 +102,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d2b7c2ecc123643af138c129251fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPosition: {x: 0.4, y: 1.3, z: 0.8}
+  spawnRotation: {x: 0, y: 180, z: 0, w: 0}
+  isActiveWeapon: 0
   isFiring: 0
   readyToFire: 0
-  shootingDelay: 0.5
-  burstCount: 3
+  shootingDelay: 0.1
+  burstCount: 1
   burstBulletsLeft: 0
   spreadIntensity: 0.1
   bulletPrefab: {fileID: 7450905700556690806, guid: a5edf6573f8f6364986cf9c41fe1d210, type: 3}
@@ -215,6 +219,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &7489595601138113364
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51658225885147238}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.03, y: 0.15, z: 0.8}
+  m_Center: {x: 0, y: 0, z: -0.05}
 --- !u!1 &1157316366397863354
 GameObject:
   m_ObjectHideFlags: 0
