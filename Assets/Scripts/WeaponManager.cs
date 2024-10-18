@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,11 @@ public class WeaponManager : MonoBehaviour
     public List<GameObject> weaponSlots;
 
     public GameObject activeWeaponSlot;
+
+    [Header("Ammo")]
+    public int totalPistolAmmo = 0;
+    public int totalRifleAmmo = 0;
+    public int totalShotgunAmmo = 0;
 
     private void Awake()
     {
@@ -25,7 +31,7 @@ public class WeaponManager : MonoBehaviour
     private void Start()
     {
         activeWeaponSlot = weaponSlots[0];
-        if(activeWeaponSlot != null)
+        if (activeWeaponSlot != null)
         {
             Weapon newWeapon = activeWeaponSlot.transform.GetChild(0).GetComponent<Weapon>();
             newWeapon.isActiveWeapon = true;
@@ -99,6 +105,36 @@ public class WeaponManager : MonoBehaviour
             currentWeapon.transform.SetParent(weapon.transform.parent);
             currentWeapon.transform.localPosition = weapon.transform.localPosition;
             currentWeapon.transform.localRotation = weapon.transform.localRotation;
+        }
+    }
+
+    public void PickUpAmmo(AmmoBox ammoBox)
+    {
+        switch (ammoBox.ammoType)
+        {
+            case AmmoBox.AmmoType.PistolAmmo:
+                totalPistolAmmo += ammoBox.ammoAmount;
+                break;
+            case AmmoBox.AmmoType.RifleAmmo:
+                totalRifleAmmo += ammoBox.ammoAmount;
+                break;
+        }
+        Destroy(ammoBox.gameObject);
+    }
+
+    public void DecreaseTotalAmmo(int bulletsUsed, Weapon.WeaponModel weaponModel)
+    {
+        switch (weaponModel)
+        {
+            case Weapon.WeaponModel.Pistol:
+                totalPistolAmmo -= bulletsUsed;
+                break;
+            case Weapon.WeaponModel.Rifle:
+                totalRifleAmmo -= bulletsUsed;
+                break;
+            case Weapon.WeaponModel.Shotgun:
+                totalShotgunAmmo -= bulletsUsed;
+                break;
         }
     }
 }
