@@ -83,6 +83,7 @@ public class InteractionManager : MonoBehaviour
                 {
                     WeaponManager.Instance.PickUpAmmo(hoveredAmmobox);
                     Destroy(hitObject.gameObject);
+                    ammoText.gameObject.SetActive(false);
                 }
             }
             else
