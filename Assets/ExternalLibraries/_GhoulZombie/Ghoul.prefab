@@ -1023,6 +1023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  weapon: {fileID: 7496387610565263974, guid: 2ef9fd57515a62a44971283f4f784fee, type: 3}
 --- !u!136 &3913773126489444711
 CapsuleCollider:
   m_ObjectHideFlags: 0

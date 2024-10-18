@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Zombie : MonoBehaviour
 {
     [SerializeField] private int hp = 100;
+    [SerializeField] private GameObject weapon;
     private Animation anim;
     private NavMeshAgent agent;
     private Transform player;
@@ -67,6 +68,12 @@ public class Zombie : MonoBehaviour
             anim.Play("Death");
             Destroy(gameObject, 1f);
         }
+    }
+
+    private void OnDestroy()
+    {
+        Vector3 rotation = new Vector3(0, 0, 90);
+        Instantiate(weapon, transform.position, Quaternion.Euler(rotation));
     }
 
     private void OnTriggerEnter(Collider other)

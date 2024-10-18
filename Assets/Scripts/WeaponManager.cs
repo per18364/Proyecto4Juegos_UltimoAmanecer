@@ -24,11 +24,14 @@ public class WeaponManager : MonoBehaviour
 
     private void Start()
     {
-        activeWeaponSlot = weaponSlots[0];
-        if(activeWeaponSlot != null)
+        if(weaponSlots.Count > 0)
         {
-            Weapon newWeapon = activeWeaponSlot.transform.GetChild(0).GetComponent<Weapon>();
-            newWeapon.isActiveWeapon = true;
+            activeWeaponSlot = weaponSlots[0];
+            if (activeWeaponSlot != null)
+            {
+                Weapon newWeapon = activeWeaponSlot.transform.GetChild(0).GetComponent<Weapon>();
+                newWeapon.isActiveWeapon = true;
+            }
         }
     }
 
