@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class InteractionManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class InteractionManager : MonoBehaviour
 
     public Weapon hoveredWeapon;
     public AmmoBox hoveredAmmobox;
+    public TextMeshProUGUI ammoText;
 
     public void Awake()
     {
@@ -63,6 +65,19 @@ public class InteractionManager : MonoBehaviour
             {
                 hoveredAmmobox = hitObject.GetComponent<AmmoBox>();
                 hoveredAmmobox.GetComponent<Outline>().enabled = true;
+                ammoText.gameObject.SetActive(true);
+                if (hoveredAmmobox.ammoType == AmmoBox.AmmoType.PistolAmmo)
+                {
+                    ammoText.text = $"Presiona E para recoger {hoveredAmmobox.ammoAmount} balas de pistola.";
+                }
+                else if (hoveredAmmobox.ammoType == AmmoBox.AmmoType.RifleAmmo)
+                {
+                    ammoText.text = $"Presiona E para recoger {hoveredAmmobox.ammoAmount} balas de rifle.";
+                }
+                else if (hoveredAmmobox.ammoType == AmmoBox.AmmoType.ShotgunAmmo)
+                {
+                    ammoText.text = $"Presiona E para recoger {hoveredAmmobox.ammoAmount} balas de escopeta.";
+                }
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -74,6 +89,7 @@ public class InteractionManager : MonoBehaviour
             {
                 if (hoveredAmmobox)
                 {
+                    ammoText.gameObject.SetActive(false);
                     hoveredAmmobox.GetComponent<Outline>().enabled = false;
                     // hoveredWeapon = null;
                 }
