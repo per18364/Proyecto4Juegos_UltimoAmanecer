@@ -47,8 +47,9 @@ public class Weapon : MonoBehaviour
 
     public enum WeaponModel
     {
-        M1911,
-        AK74
+        Pistol,
+        Rifle,
+        Shotgun,
     }
 
     public WeaponModel weaponModel;
@@ -77,7 +78,7 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isActiveWeapon)
+        if (isActiveWeapon)
         {
             if (fireMode == FireMode.Auto)
             {
@@ -88,7 +89,7 @@ public class Weapon : MonoBehaviour
                 isFiring = Input.GetKeyDown(KeyCode.Mouse0);
             }
 
-            if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading)
+            if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading && CheckAmmoLeft(weaponModel) > 0)
             {
                 Reload();
             }
@@ -104,10 +105,37 @@ public class Weapon : MonoBehaviour
                 Fire();
             }
 
-            if (AmmoManager.Instance.ammoText != null)
-            {
-                AmmoManager.Instance.ammoText.text = $"{bulletsLeft / burstCount}/{magazineSize / burstCount}";
-            }
+            // if (AmmoManager.Instance.ammoText != null)
+            // {
+            //     if (fireMode == FireMode.Single)
+            //     {
+            //         AmmoManager.Instance.ammoText.text = $"{bulletsLeft}/{magazineSize}";
+            //     }
+            //     else if (fireMode == FireMode.Burst)
+            //     {
+            //         AmmoManager.Instance.ammoText.text = $"{bulletsLeft}/{magazineSize} ({burstCount})";
+            //     }
+            //     else if (fireMode == FireMode.Auto)
+            //     {
+            //         AmmoManager.Instance.ammoText.text = $"{bulletsLeft / burstCount}/{magazineSize / burstCount}";
+            //     }
+            //     // AmmoManager.Instance.ammoText.text = $"{bulletsLeft / burstCount}/{magazineSize / burstCount}";
+            // }
+        }
+    }
+
+    public int CheckAmmoLeft(WeaponModel weaponModel)
+    {
+        switch (weaponModel)
+        {
+            case WeaponModel.Pistol:
+                return WeaponManager.Instance.totalPistolAmmo;
+            case WeaponModel.Rifle:
+                return WeaponManager.Instance.totalRifleAmmo;
+            case WeaponModel.Shotgun:
+                return WeaponManager.Instance.totalShotgunAmmo;
+            default:
+                return 0;
         }
     }
 
@@ -116,7 +144,7 @@ public class Weapon : MonoBehaviour
         bulletsLeft--;
 
         //muzzleEffect.GetComponent<ParticleSystem>().Play();
-        if (audioSource != null && shotSound != null && fireMode == FireMode.Single)
+        if (audioSource != null && shotSound != null)
         {
             audioSource.PlayOneShot(shotSound);
         }
@@ -153,7 +181,16 @@ public class Weapon : MonoBehaviour
 
     private void ReloadFinished()
     {
-        bulletsLeft = magazineSize;
+        if (CheckAmmoLeft(weaponModel) >= magazineSize)
+        {
+            bulletsLeft = magazineSize;
+            WeaponManager.Instance.DecreaseTotalAmmo(bulletsLeft, weaponModel);
+        }
+        else
+        {
+            bulletsLeft = CheckAmmoLeft(weaponModel);
+            WeaponManager.Instance.DecreaseTotalAmmo(bulletsLeft, weaponModel);
+        }
         isReloading = false;
     }
 
@@ -192,5 +229,5 @@ public class Weapon : MonoBehaviour
         Destroy(bullet);
     }
 
-   
+
 }

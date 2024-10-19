@@ -9,7 +9,7 @@ public class RoundManager : MonoBehaviour
     public GameObject zombiePrefab; // Prefab del zombie
     public Transform[] spawnPoints; // Puntos de spawn para los zombies
     private int roundNumber = 0;
-    private int zombiesPerRound = 4;
+    private int zombiesPerRound = 1;
     public TextMeshProUGUI roundText;
     private int zombieBaseHP = 100; // HP base de los zombies
 
