@@ -25,6 +25,9 @@ public class HUDManager : MonoBehaviour
 
     public Sprite emptySlotSprite;
 
+    // Diccionarios para almacenar las sprites de armas y municiones
+    private Dictionary<Weapon.WeaponModel, Sprite> weaponSprites;
+    private Dictionary<Weapon.WeaponModel, Sprite> ammoSprites;
 
     private void Awake()
     {
@@ -36,6 +39,7 @@ public class HUDManager : MonoBehaviour
         {
             Instance = this;
         }
+        LoadSprites();
     }
 
     // Start is called before the first frame update
@@ -80,32 +84,52 @@ public class HUDManager : MonoBehaviour
 
     public Sprite GetAmmoSprite(Weapon.WeaponModel model)
     {
-        switch (model)
-        {
-            case Weapon.WeaponModel.Pistol:
-                return Instantiate(Resources.Load<GameObject>("PistolAmmo")).GetComponent<SpriteRenderer>().sprite;
-            case Weapon.WeaponModel.Rifle:
-                return Instantiate(Resources.Load<GameObject>("RifleAmmo")).GetComponent<SpriteRenderer>().sprite;
-            case Weapon.WeaponModel.Shotgun:
-                return Instantiate(Resources.Load<GameObject>("ShotgunAmmo")).GetComponent<SpriteRenderer>().sprite;
-            default:
-                return null;
-        }
+        // switch (model)
+        // {
+        //     case Weapon.WeaponModel.Pistol:
+        //         return Instantiate(Resources.Load<GameObject>("PistolAmmo")).GetComponent<SpriteRenderer>().sprite;
+        //     case Weapon.WeaponModel.Rifle:
+        //         return Instantiate(Resources.Load<GameObject>("RifleAmmo")).GetComponent<SpriteRenderer>().sprite;
+        //     case Weapon.WeaponModel.Shotgun:
+        //         return Instantiate(Resources.Load<GameObject>("ShotgunAmmo")).GetComponent<SpriteRenderer>().sprite;
+        //     default:
+        //         return null;
+        // }
+        return ammoSprites.ContainsKey(model) ? ammoSprites[model] : null;
+    }
+
+    private void LoadSprites()
+    {
+        // Inicializar los diccionarios
+        weaponSprites = new Dictionary<Weapon.WeaponModel, Sprite>();
+        ammoSprites = new Dictionary<Weapon.WeaponModel, Sprite>();
+
+        // Cargar las sprites de las armas
+        weaponSprites.Add(Weapon.WeaponModel.Pistol, Resources.Load<GameObject>("1911_Weapon").GetComponent<SpriteRenderer>().sprite);
+        weaponSprites.Add(Weapon.WeaponModel.Rifle, Resources.Load<GameObject>("AK47_Weapon").GetComponent<SpriteRenderer>().sprite);
+        // weaponSprites.Add(Weapon.WeaponModel.Shotgun, Resources.Load<GameObject>("Shotgun").GetComponent<SpriteRenderer>().sprite);
+
+        // Cargar las sprites de la munición
+        ammoSprites.Add(Weapon.WeaponModel.Pistol, Resources.Load<GameObject>("PistolAmmo").GetComponent<SpriteRenderer>().sprite);
+        ammoSprites.Add(Weapon.WeaponModel.Rifle, Resources.Load<GameObject>("RifleAmmo").GetComponent<SpriteRenderer>().sprite);
+        // ammoSprites.Add(Weapon.WeaponModel.Shotgun, Resources.Load<GameObject>("ShotgunAmmo").GetComponent<SpriteRenderer>().sprite);
     }
 
     public Sprite GetWeaponSprite(Weapon.WeaponModel model)
     {
-        switch (model)
-        {
-            case Weapon.WeaponModel.Pistol:
-                return Instantiate(Resources.Load<GameObject>("1911_Weapon")).GetComponent<SpriteRenderer>().sprite;
-            case Weapon.WeaponModel.Rifle:
-                return Instantiate(Resources.Load<GameObject>("AK47_Weapon")).GetComponent<SpriteRenderer>().sprite;
-            case Weapon.WeaponModel.Shotgun:
-                return Instantiate(Resources.Load<GameObject>("Shotgun")).GetComponent<SpriteRenderer>().sprite;
-            default:
-                return null;
-        }
+        // switch (model)
+        // {
+        //     case Weapon.WeaponModel.Pistol:
+        //         return Instantiate(Resources.Load<GameObject>("1911_Weapon")).GetComponent<SpriteRenderer>().sprite;
+        //     case Weapon.WeaponModel.Rifle:
+        //         return Instantiate(Resources.Load<GameObject>("AK47_Weapon")).GetComponent<SpriteRenderer>().sprite;
+        //     case Weapon.WeaponModel.Shotgun:
+        //         return Instantiate(Resources.Load<GameObject>("Shotgun")).GetComponent<SpriteRenderer>().sprite;
+        //     default:
+        //         return null;
+        // }
+
+        return weaponSprites.ContainsKey(model) ? weaponSprites[model] : null;
     }
 
     public GameObject GetUnActiveWeaponSlot()
