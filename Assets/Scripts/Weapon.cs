@@ -183,8 +183,9 @@ public class Weapon : MonoBehaviour
     {
         if (CheckAmmoLeft(weaponModel) >= magazineSize)
         {
+            int bulletsUsed = magazineSize - bulletsLeft;
             bulletsLeft = magazineSize;
-            WeaponManager.Instance.DecreaseTotalAmmo(bulletsLeft, weaponModel);
+            WeaponManager.Instance.DecreaseTotalAmmo(bulletsUsed, weaponModel);
         }
         else
         {
