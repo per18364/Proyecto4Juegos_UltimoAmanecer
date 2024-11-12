@@ -74,6 +74,7 @@ public class Zombie : MonoBehaviour
     {
         Vector3 rotation = new Vector3(0, 0, 90);
         Instantiate(weapon, transform.position, Quaternion.Euler(rotation));
+        Destroy(weapon, 10f);
     }
 
     private void OnTriggerEnter(Collider other)
