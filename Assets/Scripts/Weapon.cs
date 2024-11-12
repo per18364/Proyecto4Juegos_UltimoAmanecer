@@ -38,6 +38,8 @@ public class Weapon : MonoBehaviour
     public int magazineSize, bulletsLeft;
     public bool isReloading;
 
+    private Animator animator;
+
     public enum FireMode
     {
         Single,
@@ -67,6 +69,8 @@ public class Weapon : MonoBehaviour
         {
             audioSource = GetComponent<AudioSource>();
         }
+
+        animator = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -141,6 +145,9 @@ public class Weapon : MonoBehaviour
 
     private void Fire()
     {
+
+        animator.SetTrigger("RECOIL");
+
         bulletsLeft--;
 
         //muzzleEffect.GetComponent<ParticleSystem>().Play();
