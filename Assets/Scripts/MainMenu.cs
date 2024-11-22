@@ -21,6 +21,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Level1"); // Reemplaza "GameScene" con el nombre de tu escena de juego
     }
 
+    public void LoadInstructions()
+    {
+        SceneManager.LoadScene("Instructions"); // Reemplaza "GameScene" con el nombre de tu escena de juego
+    }
+
     public void QuitGame()
     {
         Debug.Log("Quit");
