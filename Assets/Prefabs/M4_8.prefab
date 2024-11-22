@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 7187520724536589036}
   - component: {fileID: -2747720075590039791}
   - component: {fileID: -3582778295680681255}
+  - component: {fileID: 3246585733710274351}
   m_Layer: 0
   m_Name: M4_8
   m_TagString: Untagged
@@ -221,7 +222,8 @@ MonoBehaviour:
   bulletLife: 2
   audioSource: {fileID: -2747720075590039791}
   shotSound: {fileID: 8300000, guid: 79c24eeb77dd378469e85018c670739e, type: 3}
-  reloadTime: 2
+  reloadSound: {fileID: 8300000, guid: b549cc66d46824c45a78fab203e2e5e1, type: 3}
+  reloadTime: 3
   magazineSize: 21
   bulletsLeft: 0
   isReloading: 0
@@ -344,6 +346,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0597421, y: 0.17664653, z: 0.7236116}
   m_Center: {x: -0.004013397, y: 0.008912884, z: 0.023460403}
+--- !u!95 &3246585733710274351
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859439897703637856}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 29fde6075f001144284e145073d00d79, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2273980205812609609
 GameObject:
   m_ObjectHideFlags: 0

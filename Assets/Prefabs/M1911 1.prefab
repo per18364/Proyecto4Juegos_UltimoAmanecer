@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 8568594588828306336}
   - component: {fileID: 2172268452445395984}
   - component: {fileID: 3437354383376937304}
-  - component: {fileID: 7103773112155958308}
+  - component: {fileID: 3099012351579504699}
   m_Layer: 0
   m_Name: M1911 1
   m_TagString: Weapon
@@ -315,7 +315,8 @@ MonoBehaviour:
   bulletLife: 2
   audioSource: {fileID: 8568594588828306336}
   shotSound: {fileID: 8300000, guid: 79c24eeb77dd378469e85018c670739e, type: 3}
-  reloadTime: 1
+  reloadSound: {fileID: 8300000, guid: c5f3ecf5d278fee42840a4079c0e72ce, type: 3}
+  reloadTime: 2
   magazineSize: 10
   bulletsLeft: 0
   isReloading: 0
@@ -456,7 +457,7 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!95 &7103773112155958308
+--- !u!95 &3099012351579504699
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -464,7 +465,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6336494692500125498}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 8754d80fb1323ae43ae54fdd67ecd674, type: 2}
   m_CullingMode: 0
