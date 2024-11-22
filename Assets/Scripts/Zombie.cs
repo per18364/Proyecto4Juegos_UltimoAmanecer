@@ -7,6 +7,8 @@ public class Zombie : MonoBehaviour
 {
     [SerializeField] private int hp = 100;
     [SerializeField] private GameObject weapon;
+    [SerializeField] private ParticleSystem damageParticles; // Sistema de partículas de sangre
+
     private Animation anim;
     private NavMeshAgent agent;
     private Transform player;
@@ -62,6 +64,14 @@ public class Zombie : MonoBehaviour
     public void TakeDamage(int damage)
     {
         hp -= damage;
+        // Reproduce las partículas de sangre
+        if (damageParticles != null)
+        {
+            damageParticles.transform.position = transform.position; // Asegúrate de que estén bien ubicadas
+            damageParticles.Play();
+        }
+
+        // Comprueba si el zombie debe morir
         if (hp <= 0)
         {
             agent.SetDestination(transform.position);

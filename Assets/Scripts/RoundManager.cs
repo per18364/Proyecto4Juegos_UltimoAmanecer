@@ -42,7 +42,7 @@ public class RoundManager : MonoBehaviour
     void StartRound()
     {
         roundNumber++;
-        roundText.text = "Round " + roundNumber;
+        roundText.text = "Ronda " + roundNumber;
         int zombiesToSpawn = zombiesPerRound + (roundNumber - 1) * 2;
         int zombieHP = zombieBaseHP + ((roundNumber - 1) / 2) * 50; // Incrementa el HP cada 2 rondas
 
