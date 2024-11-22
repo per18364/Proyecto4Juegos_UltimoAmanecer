@@ -31,7 +31,7 @@ public class Weapon : MonoBehaviour
 
     //public GameObject muzzleEffect;
     public AudioSource audioSource;
-    public AudioClip shotSound;
+    public AudioClip shotSound, reloadSound;
 
     //loading
     public float reloadTime = 2f;
@@ -182,6 +182,11 @@ public class Weapon : MonoBehaviour
 
     private void Reload()
     {
+        if (audioSource != null && reloadSound != null)
+        {
+            audioSource.volume = 1.0f;
+            audioSource.PlayOneShot(reloadSound);
+        }
         isReloading = true;
         Invoke("ReloadFinished", reloadTime);
     }
@@ -199,6 +204,7 @@ public class Weapon : MonoBehaviour
             bulletsLeft = CheckAmmoLeft(weaponModel);
             WeaponManager.Instance.DecreaseTotalAmmo(bulletsLeft, weaponModel);
         }
+        audioSource.volume = 0.2f;
         isReloading = false;
     }
 

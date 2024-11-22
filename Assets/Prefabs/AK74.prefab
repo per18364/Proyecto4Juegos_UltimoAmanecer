@@ -119,7 +119,8 @@ MonoBehaviour:
   bulletLife: 3
   audioSource: {fileID: 1598511735466535316}
   shotSound: {fileID: 8300000, guid: 79c24eeb77dd378469e85018c670739e, type: 3}
-  reloadTime: 2
+  reloadSound: {fileID: 8300000, guid: b549cc66d46824c45a78fab203e2e5e1, type: 3}
+  reloadTime: 3
   magazineSize: 30
   bulletsLeft: 0
   isReloading: 0
