@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1598511735466535316}
   - component: {fileID: 7489595601138113364}
   - component: {fileID: 6941295891132783779}
+  - component: {fileID: 5160997716580724502}
   m_Layer: 0
   m_Name: AK74
   m_TagString: Weapon
@@ -259,6 +260,27 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!95 &5160997716580724502
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51658225885147238}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 29fde6075f001144284e145073d00d79, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1157316366397863354
 GameObject:
   m_ObjectHideFlags: 0

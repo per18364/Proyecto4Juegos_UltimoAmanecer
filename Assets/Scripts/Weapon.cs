@@ -38,7 +38,7 @@ public class Weapon : MonoBehaviour
     public int magazineSize, bulletsLeft;
     public bool isReloading;
 
-    private Animator animator;
+    internal Animator animator;
 
     public enum FireMode
     {
